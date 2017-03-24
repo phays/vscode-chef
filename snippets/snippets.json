@@ -43,7 +43,7 @@
 	},
 	"cookbook_file": {
 	  "prefix": "cookbook_file",
-	  "body": "cookbook_file '${1:/path/to/file}' do\r\n  source '${2:filename}'\r\n  owner '${3:root}'\r\n  group '${4:$3}'\r\n  mode '${5:0755}'\r\n  action :${6:create}\r\nend\r\n",
+	  "body": "cookbook_file '${1:/path/to/file}' do\r\n  source '${2:filename}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00644}\r\n  action :${6:create}\r\nend\r\n",
 	  "description": "A cookbook_file resource block manages files by using files that exist within a cookbook’s /files directory",
 	  "scope": "source.ruby.chef"
 	},
@@ -73,7 +73,7 @@
 	},
 	"directory": {
 	  "prefix": "directory",
-	  "body": "directory '${1:/path/to/directory}' do\r\n  owner '${2:root}'\r\n  group '${3:$2}'\r\n  mode '${4:0755}'\r\n  action :${5:create}\r\nend\r\n",
+	  "body": "directory '${1:/path/to/directory}' do\r\n  owner '${2:root}'\r\n  group '${3:root}'\r\n  mode ${4:00755}\r\n  action :${5:create}\r\nend\r\n",
 	  "description": "A directory resource block declares a directory and the permissions needed on that directory.",
 	  "scope": "source.ruby.chef"
 	},
@@ -124,10 +124,10 @@
 		"body": "expect(chef_run).to ${1:ACTION}_${2:RESOURCE}('${3:NAME}')\r\n",
 		"description": "Use the expect resource to run the unit test",
 		"scope": "source.ruby.chef"
-	},	
+	},
 	"file": {
 		"prefix": "file",
-		"body": "file '${1:/path/to/file}' do\r\n  content '${2:content}'\r\n  owner '${3:root}'\r\n  group '${4:$3}'\r\n  mode '${5:0755}'\r\n  action :${6:create}\r\nend\r\n",
+		"body": "file '${1:/path/to/file}' do\r\n  source '${2:filename}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00644}\r\n  action :${6:create}\r\nend\r\n",
 		"description": "A file resource block manages files that exist on nodes.",
 		"scope": "source.ruby.chef"
 	},
@@ -169,7 +169,7 @@
 	},
 	"ifconfig": {
 		"prefix": "ifconfig",
-		"body": "ifconfig '${1:name}' do\r\n  device '${2:eth1}'\r\n  action :${3:create}\r\nend\r\n",
+		"body": "ifconfig '${1:name}' do\r\n  device '${2:eth0}'\r\n  action :${3:create}\r\nend\r\n",
 		"description": "Use the ifconfig resource to manage interfaces.",
 		"scope": "source.ruby.chef"
 	},
@@ -184,16 +184,16 @@
 		"body": "it '${1:DESCRIPTION_HERE}' do\r\n  ${2}\r\nend\r\n",
 		"description": "Used in unit test to describe what the test will do",
 		"scope": "source.ruby.chef"
-	},	
+	},
 	"let": {
 		"prefix": "let",
 		"body": "let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }\r\n\r\n",
 		"description": "Create the ChefSpec::SoloRunner and do a mock chef_run with run_list indicaded by the describe resource.",
 		"scope": "source.ruby.chef"
-	},		
+	},
 	"link": {
 		"prefix": "link",
-		"body": "link '${1:source_path}' do\r\n  to '${2:target_path}'\r\n  link_type :${3:hard}\r\nend\r\n",
+		"body": "link '${1:source_path}' do\r\n  to '${2:target_path}'\r\nend\r\n",
 		"description": "Use the link resource to create symbolic or hard links.",
 		"scope": "source.ruby.chef"
 	},
@@ -289,19 +289,19 @@
 	},
 	"remote_directory": {
 	  "prefix": "remote_directory",
-	  "body": "remote_directory '${1:/path/to/directory}' do\r\n  source '${2:source_directory}'\r\n  owner '${3:root}'\r\n  group '${4:$3}'\r\n  mode '${5:0755}'\r\n  action :${6:create}\r\nend\r\n",
+	  "body": "remote_directory '${1:/path/to/directory}' do\r\n  source '${2:source_directory}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00755}\r\n  action :${6:create}\r\nend\r\n",
 	  "description": "A remote_directory resource block transfers a directory from a cookbook to a node, and then assigns the permissions needed on that directory.",
 	  "scope": "source.ruby.chef"
 	},
 	"remote_file": {
 	  "prefix": "remote_file",
-	  "body": "remote_file '${1:/path/to/file}' do\r\n  source '${2:source_file}'\r\n  owner '${3:root}'\r\n  group '${4:$3}'\r\n  mode '${5:0755}'\r\n  action :${6:create}\r\nend\r\n",
+	  "body": "remote_file '${1:/path/to/file}' do\r\n  source '${2:source_file}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00644}\r\n  action :${6:create}\r\nend\r\n",
 	  "description": "Use the remote_file resource to transfer a file from a remote location using file specificity.",
 	  "scope": "source.ruby.chef"
 	},
 	"route": {
 		"prefix": "route",
-		"body": "route '${1:10.0.1.10/32}' do\r\n  gateway '${2:10.0.0.1}'\r\n  device '${3:eth1}'\r\nend\r\n",
+		"body": "route '${1:10.0.1.10/32}' do\r\n  gateway '${2:10.0.0.1}'\r\n  device '${3:eth0}'\r\nend\r\n",
 		"description": "Use the route resource to manage the system routing table in a Linux environment.",
 		"scope": "source.ruby.chef"
 	},
@@ -355,8 +355,14 @@
 	},
 	"template": {
 		"prefix": "template",
-		"body": "template '${1:destination_path}' do\r\n  source '${2:source_file}'\r\n  owner '${3:root}'\r\n  group '${4:3}'\r\n  mode '${5:0755}'\r\n  action :${6:create}\r\nend\r\n",
+		"body": "template '${1:destination_path}' do\r\n  source '${2:source_file}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00644}\r\n  action :${6:create}\r\nend\r\n",
 		"description": "Use the template resource to manage the contents of a file using an Embedded Ruby (ERB) template.",
+		"scope": "source.ruby.chef"
+	},
+  "template_var": {
+		"prefix": "template_var",
+		"body": "template '${1:destination_path}' do\r\n  source '${2:source_file}'\r\n  owner '${3:root}'\r\n  group '${4:root}'\r\n  mode ${5:00644}\r\n  variables(\r\n    ${6:var_name}: ${7:some_value}\r\n  )\r\n  action :${8:create}\r\nend\r\n",
+		"description": "Template resource _with variables_ to manage the contents of a file using an Embedded Ruby (ERB) template.",
 		"scope": "source.ruby.chef"
 	},
 	"user": {

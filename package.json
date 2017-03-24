@@ -1,17 +1,17 @@
 {
-	"name": "Chef",
+	"name": "Chef-internal",
 	"description": "Chef language support and snippets for Visual Studio Code",
 	"version": "0.6.2",
 	"publisher": "Pendrica",
 	"icon": "images/chef-logo.svg",
-	"displayName": "Chef Extension for Visual Studio Code",
+	"displayName": "Chef (internal) Extension for Visual Studio Code",
 	"license": "Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pendrica/vscode-chef.git"
+		"url": "https://github.com/phays/vscode-chef.git"
 	},
 	"bugs": {
-		"url": "https://github.com/pendrica/vscode-chef/issues"
+		"url": "https://github.com/phays/vscode-chef/issues"
 	},
 	"engines": {
 		"vscode": "^0.10.x"
@@ -66,7 +66,7 @@
 		],
 		"configuration": {
 			"type": "object",
-			"title": "Chef Extension for Visual Studio Code configuration",
+			"title": "Chef (internal) Extenstion for Visual Studio Code configuration",
 			"properties": {
 				"rubocop.enable": {
 					"type": "boolean",
